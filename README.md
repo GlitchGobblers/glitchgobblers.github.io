@@ -2,22 +2,17 @@
 
 > the website for the engineering 1 project.
 
-The site is built with React, Vite, TypeScript and Tailwind CSS.
+The site is built with in plain HTML and CSS.
 
 ### Files Structure
 
 ```
 yetti-web/
-├── src/
-│   ├── App.tsx <- The main component of the project, contains the main markup and logic of the site
-│   ├── index.css <- Main CSS file of the project, including Tailwind CSS themes and custom fonts
-│   ├── main.tsx <- The main entry point of Vite
-│   └── ...
+├── index.html <- The main HTML file of the project, contains the main markup and styles of the root route
+├── deliverables.html <- The HTML file of the deliverables route, with links to download the deliverables
 ├── public/ <- The public folder, contains the static files of the project, such as the favicon or any images
-├── .github/
-│   ├── workflows/ <- The GitHub Actions workflows for the project
-│   │   ├── static.yml <- The workflow for the static site deployment to GitHub Pages
-│   └── ...
+|   ├── favicon.ico <- The favicon of the project
+├── .gitignore <- The git ignore file
 ```
 
 ### Local Development
@@ -25,12 +20,5 @@ yetti-web/
 ```bash
 git clone https://github.com/yetti-eng/website.git
 cd website
-bun install
-bun run dev
-```
-
-### Build
-
-```bash
-bun run build
+live-server # or any other html serving software
 ```
