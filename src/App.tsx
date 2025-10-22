@@ -1,3 +1,5 @@
+import { ArrowUpRight } from "lucide-react";
+
 function App() {
   return (
     <div className="relative min-h-screen bg-slate-900 overflow-hidden">
@@ -58,6 +60,14 @@ function App() {
             <span className="relative z-10">Deliverables</span>
           </button>
         </div>
+        <a
+          href="https://github.com/yetti-eng"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mt-8 flex items-center gap-2 cursor-pointer"
+        >
+          GitHub Repository <ArrowUpRight size={17} className="mt-1" />
+        </a>
       </div>
     </div>
   );
