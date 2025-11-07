@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yetti - Weekly Progress</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #e2e8f0;
+        background-color: #0f172a;
+      }
+
+      .container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 3rem 1.25rem 4rem;
+      }
+
+      .back-button {
+        align-self: flex-start;
+        margin-left: 1rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.0625rem;
+        letter-spacing: 0.05em;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #ffffff;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .back-button:hover {
+        color: #f59e0b;
+      }
+
+      .icon-chevron {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+
+      .content {
+        width: 100%;
+        max-width: 56rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .page-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.02em;
+        text-align: left;
+      }
+
+      .intro {
+        font-family: "Geist", sans-serif;
+        color: #cbd5e1;
+        font-size: 1rem;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .nav a {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.9375rem;
+        color: #fcd34d;
+        text-decoration: none;
+        border: 1px solid #475569;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        transition: all 0.2s;
+      }
+
+      .nav a:hover {
+        border-color: #b45309;
+        color: #f59e0b;
+      }
+
+      .section-card {
+        background-color: rgba(30, 41, 59, 0.5);
+        border: 1px solid #334155;
+        border-left: 4px solid #b45309;
+        border-radius: 0.375rem;
+        padding: 1rem 1rem 0.75rem;
+        backdrop-filter: blur(4px);
+      }
+
+      .section-title {
+        font-family: "Geist", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fde68a;
+        margin-bottom: 0.5rem;
+      }
+
+      .entry {
+        margin-bottom: 0.75rem;
+        padding-left: 0.75rem;
+        border-left: 2px solid #475569;
+      }
+
+      .entry h4 {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fbbf24;
+        margin-bottom: 0.25rem;
+      }
+
+      .entry ul {
+        padding-left: 1rem;
+        margin-left: 0.25rem;
+        list-style: disc;
+      }
+
+      .entry ul li {
+        margin: 0.125rem 0;
+        color: #cbd5e1;
+      }
+
+      .footer-note {
+        margin-top: 0.5rem;
+        font-size: 0.9375rem;
+        color: #94a3b8;
+        font-family: "Geist", sans-serif;
+      }
+
+      @media (min-width: 768px) {
+        .page-title {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="deliverables.html" class="back-button">
+        <svg
+          class="icon-chevron"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        BACK
+      </a>
+
+      <div class="content">
+        <h1 class="page-title">WEEKLY PLAN & PROGRESS</h1>
+
+        <div class="nav">
+          <a href="#systematic-plan">Systematic plan</a>
+          <a href="#risk-assessment">Risk assessment</a>
+          <a href="#programming">Programming</a>
+          <a href="#map-development">Map development</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#requirements">Requirements</a>
+        </div>
+
+        <!-- Systematic plan -->
+        <section id="systematic-plan" class="section-card">
+          <h2 class="section-title">Systematic plan</h2>
+
+          <div class="entry">
+            <h4>Milestones and dates (A1 due Mon 10 Nov 2025)</h4>
+            <ul>
+              <li>
+                Iteration 1 (1–7 Oct): Risk register baseline; requirements
+                skeleton; website scaffolded.
+              </li>
+              <li>
+                Iteration 2 (8–14 Oct): Requirements expanded; architecture
+                baseline.
+              </li>
+              <li>
+                Iteration 3 (15–21 Oct): Architecture refined; risk register
+                matured.
+              </li>
+              <li>
+                Iteration 4 (22–28 Oct): Repo scaffold (Java 17, Gradle,
+                libGDX); CI setup.
+              </li>
+              <li>
+                Iteration 5 (29 Oct–4 Nov): Map pipeline (Tiled) and art; event
+                system skeleton.
+              </li>
+              <li>
+                Iteration 6 (5–10 Nov): Timer/pause/counters; polish, packaging,
+                PDFs and website.
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Key tasks with dates, priorities, dependencies</h4>
+            <ul>
+              <li>
+                <strong>T001</strong> Risk assessment and mitigation
+                <ul>
+                  <li>Start: 1 Oct • Finish: 28 Oct</li>
+                  <li>
+                    Dependencies: none • Output: Risk1.pdf, risk register (IDs,
+                    likelihood/impact, mitigation)
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T002</strong> Requirements elicitation and specification
+                <ul>
+                  <li>Start: 2 Oct • Finish: 7 Nov</li>
+                  <li>
+                    Dependencies: none • Output: Req1.pdf with UR/FR/NFR IDs and
+                    acceptance criteria
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T003</strong> Architecture (structural + behavioural,
+                traceability)
+                <ul>
+                  <li>Start: 9 Oct • Finish: 7 Nov</li>
+                  <li>
+                    Dependencies: T002 (req IDs) • Output: Arch1.pdf with Doc
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T004</strong> Tooling and CI (Java 17, Gradle, libGDX)
+                <ul>
+                  <li>Start: 22 Oct • Finish: 3 Nov</li>
+                  <li>
+                    Dependencies: none • Output: Initial code in the github
+                    repository
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T005</strong> Map pipeline and art (Tiled + layers)
+                <ul>
+                  <li>Start: 29 Oct • Finish: 7 Nov</li>
+                  <li>
+                    Dependencies: T004 (project scaffold) • Output: maze assets
+                    and layers
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T006</strong> Event system skeleton (triggers/effects)
+                <ul>
+                  <li>Start: 29 Oct • Finish: 4 Nov</li>
+                  <li>
+                    Dependencies: T005 (map loader) • Output: Triggering
+                    mechanism, effects interface
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T007</strong> Implement required A1 events (1 negative,
+                1 positive, 1 hidden)
+                <ul>
+                  <li>Start: 30 Oct • Finish: 7 Nov</li>
+                  <li>
+                    Dependencies: T006 • Output: Three working events, counters
+                    incremented
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T008</strong> Timer, pause and counters UI
+                <ul>
+                  <li>Start: 22 Oct • Finish: 5 Nov</li>
+                  <li>
+                    Dependencies: T004 (loop/input), T006 (event outcomes for
+                    counters) • Output: 5‑minute timer with pause, counters
+                    overlay
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T009</strong> Packaging
+                <ul>
+                  <li>Start: 1 Nov • Finish: 6 Nov</li>
+                  <li>
+                    Dependencies: T004, T008 • Output: Single executable JAR,
+                    validated on Windows/macOS/Linux
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T010</strong> Accessibility and attribution
+                <ul>
+                  <li>Start: 1 Nov • Finish: 7 Nov</li>
+                  <li>
+                    Dependencies: T005–T008 • Output: Multimodal cues (text +
+                    visual/audio), Assets/ATTRIBUTION.md
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>T011</strong> Website and deliverables
+                <ul>
+                  <li>Start: 1 Oct • Finish: 9–10 Nov</li>
+                  <li>
+                    Dependencies: all • Output: Website with links to PDFs, JAR,
+                    repo; final PDFs (Req1.pdf, Arch1.pdf, Plan1.pdf, Risk1.pdf,
+                    Impl1.pdf)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Dependencies summary</h4>
+            <ul>
+              <li>T003 depends on T002 (traceability from requirements).</li>
+              <li>T006 depends on T005 (map loader and layers).</li>
+              <li>T007 depends on T006 (event framework).</li>
+              <li>
+                T008 depends on T004 (input/game loop) and T006 (event
+                outcomes).
+              </li>
+              <li>T009 depends on T004 and T008 (build + artifact).</li>
+              <li>T011 depends on all prior tasks.</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Plan evolution (high‑level)</h4>
+            <ul>
+              <li>
+                Week of 1 Oct: Established the risk register and requirements
+                skeleton; website scaffolded.
+              </li>
+              <li>
+                Week of 8 Oct: Requirements expanded and formatted; architecture
+                baseline produced.
+              </li>
+              <li>
+                Week of 15 Oct: Architecture refined (class relationships, early
+                state model); risk register gained consequence column and
+                colour‑coding.
+              </li>
+              <li>
+                Week of 22 Oct: libGDX project scaffolded; CI configured;
+                initial input/timer loop prototyped.
+              </li>
+              <li>
+                Week of 29 Oct: Tiled map and art progressed; event system
+                skeleton added; risk and requirements updated for clarity.
+              </li>
+              <li>
+                Week of 5 Nov: Timer, collisions, movement, initial/end screens
+                completed; events implemented; packaging validated; final polish
+                and documentation underway.
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Priorities (MoSCoW)</h4>
+            <ul>
+              <li>
+                Must: T001–T009, T011 (meets A1 brief: one of each event, timer
+                up to 5 minutes with pause, counters, executable JAR, and
+                website with links).
+              </li>
+              <li>
+                Should: T010 (multimodal cues, attribution); simple victory
+                screen polish.
+              </li>
+              <li>
+                Could: Optional marketing link/QR event if time permits
+                (de‑scoped if it risks Musts).
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Risk assessment -->
+        <section id="risk-assessment" class="section-card">
+          <h2 class="section-title">Risk assessment</h2>
+
+          <div class="entry">
+            <h4>Initial start: October 1, 2025</h4>
+            <ul>
+              <li>Created table to hold risks in</li>
+              <li>
+                Added team member stops contributing, and if remote repo goes
+                down
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by October 7, 2025:</h4>
+            <ul>
+              <li>
+                Added introduction as to why risk mitigation is important, and
+                how the risks were planned out, and why the decision was made to
+                organise it in a table
+              </li>
+              <li>
+                Added a consequence column, as well as colour coding for
+                likelihood and impact
+              </li>
+              <li>Each risk is now identified with a number</li>
+              <li>
+                Added risks for: "Development software in use stops working",
+                "Hardware in use stops working", "Customer changes their mind on
+                a certain aspect of the product", "Feature doesn't fit what the
+                customer envisaged" and "Library in use for the development
+                loses support and stops working"
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by October 14, 2025:</h4>
+            <ul>
+              <li>Expanded some items in "Consequences" column</li>
+              <li>
+                Added risk, consequences, mitigation, etc for: another company
+                taking legal action against the project, the quality of the code
+                being poor due to constraints, and unexpected problems arising.
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by October 21, 2025:</h4>
+            <ul>
+              <li>
+                Added risk and corresponding column fields for if development
+                goes poorly
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by October 28, 2025:</h4>
+            <ul>
+              <li>Deliverable finished</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Programming -->
+        <section id="programming" class="section-card">
+          <h2 class="section-title">Programming</h2>
+
+          <div class="entry">
+            <h4>Initial start: October 22, 2025</h4>
+            <ul>
+              <li>
+                First meaningful commit was made, to scaffold libgdx project
+              </li>
+              <li>Now everyone is working in branches</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by October 27, 2025:</h4>
+            <ul>
+              <li>Smaller commits done, more maintenance than development</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress as of 5th november:</h4>
+            <ul>
+              <li>Timer works</li>
+              <li>Collisions work</li>
+              <li>Movements work</li>
+              <li>Initial screen works</li>
+              <li>End screen works</li>
+              <li>
+                refactored how movement key input is checked by introducing
+                dedicated helper methods in InputHelper, then updates Main to
+                use them
+              </li>
+              <li>Still todo:</li>
+              <ul>
+                <li>Credits (assigned to Katelyn and Lucy)</li>
+                <li>Map (assigned to Lucy)</li>
+                <li>Scoring (assigned to Katelyn)</li>
+                <li>Events (assigned to Katelyn)</li>
+              </ul>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Map development -->
+        <section id="map-development" class="section-card">
+          <h2 class="section-title">Map development</h2>
+
+          <div class="entry">
+            <h4>Initial start: October 29, 2025</h4>
+            <ul>
+              <li>First project set up</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by November 5, 2025:</h4>
+            <ul>
+              <li>Using Tiled, map is mostly finished</li>
+              <li>Art has been created and the layers are added.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Architecture -->
+        <section id="architecture" class="section-card">
+          <h2 class="section-title">Architecture</h2>
+
+          <div class="entry">
+            <h4>Initial start: October 9, 2025</h4>
+            <ul>
+              <li>First project set up, basic plan of what to implement</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by: October 16, 2025:</h4>
+            <ul>
+              <li>
+                Added structural class diagram, laying out in detail how core
+                classes (Game, Timer, Screen, Sprite, Player, Dean, Item, Event)
+                interact and satisfy requirements (FR_SCORING, FR_PAUSING,
+                UR_TIME, UR_UI).
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by: October 23, 2025:</h4>
+            <ul>
+              <li>
+                New classes/components and roles or expanded relationships:
+                Game: main class; checks player location to trigger events,
+                Score: influenced by events (and possibly timer), Event:
+                triggered when player is on specific tile; affects score,
+                Inventory: stores items, Dean: appears at end if time runs out,
+                Maze: placeholder for possible procedural generation, Tile:
+                walls/paths with textures; some trigger events; Game accesses
+                tiles (abstracted)
+              </li>
+              <li>
+                Relationship clarifications: Timer can modify score, Items
+                reside on tiles and move to inventory
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by: October 30, 2025:</h4>
+            <ul>
+              <li>
+                Added paragraph explaining the design was influenced by the
+                pipeline architecture.
+              </li>
+              <li>Full write-up replacing bullet points</li>
+              <li>
+                Requirement traceability added with IDs: FR_MAP_CREATION,
+                UR_TIME, UR_UI, FR_SCORING, etc
+              </li>
+              <li>
+                Pipeline-architecture influence explained (inputs → components →
+                outputs)
+              </li>
+              <li>Detailed class roles and relationships fleshed out:</li>
+              <li>
+                Game holds int[] maze (pre-filled), orchestrates Timer/Events
+              </li>
+              <li>Timer tracks time, pause/play, affects Score</li>
+              <li>Screen aggregates visuals; uses Sprite assets</li>
+              <li>
+                Sprite stores location/speed; handles input; used by Player/Dean
+              </li>
+              <li>Added design process/history section with figures</li>
+              <li>State diagram still only mentioned briefly</li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by: November 6, 2025:</h4>
+            <ul>
+              <li>
+                Major expansion of behavioural/state-diagram section:
+                Event-driven rationale for using states, Timer substate: running
+                ↔ paused → expired; reacts to pauseGame/resumeGame/timeout,
+                Event propagation to parent "playing" state; higher-level
+                transitions: playing, paused, game over, Event propagation to
+                parent "playing" state; higher-level transitions: playing,
+                paused, game over.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Requirements -->
+        <section id="requirements" class="section-card">
+          <h2 class="section-title">Requirements</h2>
+
+          <div class="entry">
+            <h4>Initial start: October 2, 2025</h4>
+            <ul>
+              <li>
+                Empty tables for user requirements, functional requirements and
+                non-functional requirements
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by: October 9, 2025</h4>
+            <ul>
+              <li>
+                Add user requirements for age rating, licensing, in game events,
+                score, map and pause menu/abilities
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by: October 16, 2025</h4>
+            <ul>
+              <li>
+                Expanded introduction, to include explanations for the tables,
+                including the format of each requirement
+              </li>
+              <li>
+                Add paragraph about how requirements were gathered and converted
+                to be placed in the table
+              </li>
+              <li>
+                Added even more requirements, such as the game style, difficulty
+                level, programming language, runtime environment, system
+                restrictions, game time and language.
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by: October 23, 2025</h4>
+            <ul>
+              <li>
+                Added: UR_MAIN_MENU (main menu with new game, settings, exit;
+                returns after each maze) [new]
+              </li>
+              <li>UR_UI cleaned: removed "(maybe inventory idk)"</li>
+              <li>
+                Minor consistency: UR_MAIN_MENU priority shown as "shall"
+                (lowercase) vs others "Shall/Should/May"
+              </li>
+              <li>
+                Added: FR_MAIN_MENU (buttons: new game, exit, settings) [new]
+              </li>
+              <li>
+                Added: FR_SETTINGS (settings screen; e.g., change volume) [new]
+              </li>
+              <li>
+                FR_HIDDEN_EVENTS phrasing tightened (removed quotes around
+                "activates")
+              </li>
+            </ul>
+          </div>
+
+          <div class="entry">
+            <h4>Progress by: October 20, 2025</h4>
+            <ul>
+              <li>
+                Added title page with team name (Cohort 3 Team 7) and full
+                member list
+              </li>
+              <li>
+                UR_MAP: removed the parenthetical "(unspecified for the final
+                version so we need to ask)" — now simply "There are several
+                maps..."
+              </li>
+              <li>
+                FR_SETTINGS: minor punctuation cleanup (removed trailing comma);
+                content unchanged
+              </li>
+              <li>
+                Otherwise unchanged: all UR/FR/NFR IDs and texts remain the same
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

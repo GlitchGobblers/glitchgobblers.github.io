@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yetti - Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=JetBrains+Mono:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #e2e8f0;
+        background-color: #0f172a;
+      }
+
+      .container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 3rem 1.25rem 4rem;
+      }
+
+      .back-button {
+        align-self: flex-start;
+        margin-left: 1rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.0625rem;
+        letter-spacing: 0.05em;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #ffffff;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .back-button:hover {
+        color: #f59e0b;
+      }
+
+      .icon-chevron {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+
+      .content {
+        width: 100%;
+        max-width: 56rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .page-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        font-family: "JetBrains Mono", monospace;
+        letter-spacing: 0.02em;
+        text-align: left;
+      }
+
+      .entry {
+        margin-bottom: 1.5rem;
+        padding-left: 0.75rem;
+        border-left: 2px solid #475569;
+      }
+
+      .entry h4 {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fbbf24;
+        margin-bottom: 0.5rem;
+      }
+
+      .entry h4 a {
+        color: #fbbf24;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .entry h4 a:hover {
+        color: #f59e0b;
+        text-decoration: underline;
+      }
+
+      .entry ul {
+        padding-left: 1rem;
+        margin-left: 0.25rem;
+        list-style: disc;
+      }
+
+      .entry ul li {
+        margin: 0.25rem 0;
+        color: #cbd5e1;
+      }
+
+      @media (min-width: 768px) {
+        .page-title {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="deliverables.html" class="back-button">
+        <svg
+          class="icon-chevron"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+        BACK
+      </a>
+
+      <div class="content">
+        <h1 class="page-title">ARCHITECTURE</h1>
+
+        <div class="entry">
+          <h4>
+            <a href="#" rel="noopener noreferrer"> October 9th, 2025 </a>
+          </h4>
+          <ul>
+            <li>First project set up, basic plan of what to implement</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h4>
+            <a href="october16.pdf" target="_blank" rel="noopener noreferrer">
+              October 16, 2025
+            </a>
+          </h4>
+          <ul>
+            <li>
+              Added structural class diagram, laying out in detail how core
+              classes (Game, Timer, Screen, Sprite, Player, Dean, Item, Event)
+              interact and satisfy requirements (FR_SCORING, FR_PAUSING,
+              UR_TIME, UR_UI).
+            </li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h4>
+            <a href="october23.pdf" target="_blank" rel="noopener noreferrer">
+              October 23, 2025
+            </a>
+          </h4>
+          <ul>
+            <li>
+              New classes/components and roles or expanded relationships: Game:
+              main class; checks player location to trigger events, Score:
+              influenced by events (and possibly timer), Event: triggered when
+              player is on specific tile; affects score, Inventory: stores
+              items, Dean: appears at end if time runs out, Maze: placeholder
+              for possible procedural generation, Tile: walls/paths with
+              textures; some trigger events; Game accesses tiles (abstracted)
+            </li>
+            <li>
+              Relationship clarifications: Timer can modify score, Items reside
+              on tiles and move to inventory
+            </li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h4>
+            <a href="october30.pdf" target="_blank" rel="noopener noreferrer">
+              October 30, 2025
+            </a>
+          </h4>
+          <ul>
+            <li>
+              Added paragraph explaining the design was influenced by the
+              pipeline architecture.
+            </li>
+            <li>Full write-up replacing bullet points</li>
+            <li>
+              Requirement traceability added with IDs: FR_MAP_CREATION, UR_TIME,
+              UR_UI, FR_SCORING, etc
+            </li>
+            <li>
+              Pipeline-architecture influence explained (inputs → components →
+              outputs)
+            </li>
+            <li>Detailed class roles and relationships fleshed out:</li>
+            <li>
+              Game holds int[] maze (pre-filled), orchestrates Timer/Events
+            </li>
+            <li>Timer tracks time, pause/play, affects Score</li>
+            <li>Screen aggregates visuals; uses Sprite assets</li>
+            <li>
+              Sprite stores location/speed; handles input; used by Player/Dean
+            </li>
+            <li>Added design process/history section with figures</li>
+            <li>State diagram still only mentioned briefly</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <h4>
+            <a href="november6.pdf" target="_blank" rel="noopener noreferrer">
+              November 6, 2025
+            </a>
+          </h4>
+          <ul>
+            <li>
+              Major expansion of behavioural/state-diagram section: Event-driven
+              rationale for using states, Timer substate: running ↔ paused →
+              expired; reacts to pauseGame/resumeGame/timeout, Event propagation
+              to parent "playing" state; higher-level transitions: playing,
+              paused, game over, Event propagation to parent "playing" state;
+              higher-level transitions: playing, paused, game over.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
