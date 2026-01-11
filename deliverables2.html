@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yetti - Assessment 1 Deliverables</title>
+    <title>Yetti - Assessment 2 Deliverables</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -91,16 +91,25 @@
         margin-bottom: 0.5rem;
       }
 
-      .deliverables-list a {
+      .deliverables-list a, .toggle {
         color: white;
         text-decoration: none;
         transition: all 0.3s;
+        cursor: pointer;
         display: inline-block;
       }
 
-      .deliverables-list a:hover {
+      .deliverables-list a:hover, .toggle:hover {
         color: #f59e0b;
         text-decoration: underline;
+      }
+
+      .nested {
+        display: none;
+        margin-top: 0.5rem;
+        padding-left: 1.5rem;
+        border-left: 2px solid #475569; 
+        list-style: none;
       }
 
       .button-group {
@@ -113,7 +122,6 @@
       }
 
       .btn {
-        width: 100%;
         font-family: "JetBrains Mono", monospace;
         font-size: 1.25rem;
         padding: 0.75rem 2rem;
@@ -156,23 +164,6 @@
         opacity: 1;
       }
 
-      .btn-primary::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border: 2px solid transparent;
-        transition: all 0.3s;
-      }
-
-      .btn-primary:hover::after {
-        border-color: rgba(251, 191, 36, 0.5);
-      }
-
-      .btn-text {
-        position: relative;
-        z-index: 10;
-      }
-
       .btn-secondary {
         font-weight: 600;
         background-color: rgba(30, 41, 59, 0.5);
@@ -187,19 +178,21 @@
         transform: scale(1.02);
       }
 
+      .btn-text {
+        position: relative;
+        z-index: 10;
+      }
+
       @media (min-width: 640px) {
         .button-group {
           flex-direction: row;
-        }
-        .btn {
-          width: auto;
         }
       }
 
       @media (max-width: 768px) {
         .container {
           justify-content: flex-start;
-          padding-top: 8rem;
+          padding-top: 8rem; 
         }
         .back-button {
           top: 2rem;
@@ -214,33 +207,51 @@
   <body>
     <div class="container">
       <a href="index.html" class="back-button">
-        <svg
-          class="icon-chevron"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
+        <svg class="icon-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m15 18-6-6 6-6"></path>
         </svg>
         HOME
       </a>
 
       <div class="content">
-        <h1 class="page-title">Assessment 1 DELIVERABLES</h1>
+        <h1 class="page-title">Assessment 2 DELIVERABLES</h1>
         <ul class="deliverables-list">
-          <li><a href="public/deliverables/Plan1.pdf" target="_blank">Method Selection and Planning</a></li>
-          <li><a href="public/deliverables/Req1.pdf" target="_blank">Requirements</a></li>
-          <li><a href="public/deliverables/Arch1.pdf" target="_blank">Architecture</a></li>
-          <li><a href="public/deliverables/Risk1.pdf" target="_blank">Risk Assessment</a></li>
-          <li><a href="public/deliverables/Impl1.pdf" target="_blank">Implementation</a></li>
+          <li>
+            <span class="toggle">▶ Change Report</span>
+            <ul class="nested">
+              <li><a href="public/deliverables2/Change2.pdf" target="_blank">Change Report (PDF)</a></li>
+              <li>
+                <span class="toggle">▶ Updated Deliverables</span>
+                <ul class="nested">
+                  <li><a href="public/deliverables2/Req2.pdf">Updated Requirements</a></li>
+                  <li><a href="public/deliverables2/Arch2.pdf">Updated Architecture</a></li>
+                  <li><a href="public/deliverables2/Risk2.pdf">Updated Risk Assessment</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li><a href="public/deliverables2/Impl2.pdf" target="_blank">Implementation</a></li>
+
+          <li>
+            <span class="toggle">▶ Software Testing</span>
+            <ul class="nested">
+              <li><a href="public/deliverables2/Test2.pdf" target="_blank">Testing Report</a></li>
+              <li>
+                <span class="toggle">▶ Supporting Evidence</span>
+                <ul class="nested">
+                  <li><a href="public/deliverables2/result.html">Testing Results</a></li>
+                  <li><a href="public/deliverables2/coverage.html">Coverage Report</a></li>
+                   <li><a href="public/deliverables2/manual.pdf">Manual Test Cases</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li><a href="public/deliverables2/Eval2.pdf">User Evaluation</a></li>
+          <li><a href="public/deliverables2/CI2.pdf">Continuous Integration</a></li>
           <li><a href="architecture.html">Design Evidence</a></li>
-          <li><a href="progress.html">Weekly Progress and Plan</a></li>
+          
         </ul>
       </div>
 
@@ -253,5 +264,20 @@
         </a>
       </div>
     </div>
+
+    <script>
+      document.querySelectorAll(".toggle").forEach((t) => {
+        t.addEventListener("click", () => {
+          const next = t.nextElementSibling;
+          if (next) {
+            const isOpening = next.style.display !== "block";
+            next.style.display = isOpening ? "block" : "none";
+            t.innerText = isOpening
+              ? t.innerText.replace("▶", "▼")
+              : t.innerText.replace("▼", "▶");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
