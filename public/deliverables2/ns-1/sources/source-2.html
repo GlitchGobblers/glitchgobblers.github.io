@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > InputHelper</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">io.github.glitchgobblers</a>
+</div>
+
+<h1>Coverage Summary for Class: InputHelper (io.github.glitchgobblers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">InputHelper</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (1/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (1/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    23.1%
+  </span>
+  <span class="absValue">
+    (3/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package io.github.glitchgobblers;
+&nbsp;
+&nbsp;import com.badlogic.gdx.Gdx;
+&nbsp;import com.badlogic.gdx.Input;
+&nbsp;import com.badlogic.gdx.math.Vector2;
+&nbsp;
+<b class="nc">&nbsp;public final class InputHelper {</b>
+&nbsp;  public static boolean anyOfTheseKeysPressed(int... keys) {
+<b class="nc">&nbsp;    for (int key : keys) {</b>
+<b class="nc">&nbsp;      if (Gdx.input.isKeyPressed(key)) {</b>
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;      }
+&nbsp;    }
+<b class="nc">&nbsp;    return false;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public static boolean moveUpPressed() {
+<b class="nc">&nbsp;    return anyOfTheseKeysPressed(Input.Keys.UP, Input.Keys.W);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public static boolean moveDownPressed() {
+<b class="nc">&nbsp;    return anyOfTheseKeysPressed(Input.Keys.DOWN, Input.Keys.S);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public static boolean moveLeftPressed() {
+<b class="nc">&nbsp;    return anyOfTheseKeysPressed(Input.Keys.LEFT, Input.Keys.A);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public static boolean moveRightPressed() {
+<b class="nc">&nbsp;    return anyOfTheseKeysPressed(Input.Keys.RIGHT, Input.Keys.D);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * @param vec The vector to convert into a unit vector.
+&nbsp;   * @return A unit vector (magnitude = 1) with the same angle as vec.
+&nbsp;   */
+&nbsp;  public static Vector2 makeUnitVector(Vector2 vec) {
+<b class="pc">&nbsp;    if (vec.isZero()) {</b>
+<b class="nc">&nbsp;      return vec;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Use Pythagoras&#39; to find hypotenuse (x^2 + y^2 = hyp^2)
+<b class="fc">&nbsp;    float hyp = (float) Math.sqrt(Math.pow(vec.x, 2) + Math.pow(vec.y, 2));</b>
+&nbsp;
+&nbsp;    // Use hyp to calculate the new unit vector (x/hyp, y/hyp)
+<b class="fc">&nbsp;    return new Vector2(vec.x / hyp, vec.y / hyp);</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-01-02 16:28</div>
+</div>
+</body>
+</html>

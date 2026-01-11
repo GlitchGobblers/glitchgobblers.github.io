@@ -1,0 +1,203 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > MapManager</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">io.github.glitchgobblers</a>
+</div>
+
+<h1>Coverage Summary for Class: MapManager (io.github.glitchgobblers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MapManager</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    28.6%
+  </span>
+  <span class="absValue">
+    (2/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (2/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (8/20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package io.github.glitchgobblers;
+&nbsp;
+&nbsp;import com.badlogic.gdx.graphics.OrthographicCamera;
+&nbsp;import com.badlogic.gdx.maps.tiled.TiledMap;
+&nbsp;import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+&nbsp;import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+&nbsp;import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+&nbsp;import com.badlogic.gdx.math.Rectangle;
+&nbsp;
+&nbsp;/**
+&nbsp; * Manages the tile map of the game.
+&nbsp; * Responsible for its loading, rendering and collision detection with the player.
+&nbsp; */
+&nbsp;public class MapManager {
+&nbsp;  private TiledMap map;
+&nbsp;  private OrthogonalTiledMapRenderer renderer;
+&nbsp;  private final OrthographicCamera camera;
+&nbsp;  private TiledMapTileLayer collisionsLayer;
+&nbsp;
+<b class="fc">&nbsp;  public MapManager(OrthographicCamera camera) {</b>
+<b class="fc">&nbsp;    this.camera = camera; // for rendering on the screen</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Loads the tilemap and defines the collision layer.
+&nbsp;   *
+&nbsp;   * @param mapName internal path of the map file
+&nbsp;   */
+&nbsp;  public void loadMap(String mapName) {
+<b class="nc">&nbsp;    map = new TmxMapLoader().load(mapName);</b>
+<b class="nc">&nbsp;    renderer = new OrthogonalTiledMapRenderer(map, 1 / 48f); // 48x48 pixels per tile</b>
+&nbsp;
+&nbsp;    // &quot;collisions&quot; layer includes all tiles that cannot be walked on
+<b class="nc">&nbsp;    collisionsLayer = (TiledMapTileLayer) map.getLayers().get(&quot;collisions&quot;);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void render() {
+<b class="nc">&nbsp;    renderer.setView(camera);</b>
+<b class="nc">&nbsp;    renderer.render();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Checks if a world coordinate is unwalkable/ causes a collision with the player.
+&nbsp;   *
+&nbsp;   * @param posX
+&nbsp;   * @param posY
+&nbsp;   * @return true if the position falls within a collision tile, false otherwise
+&nbsp;   */
+&nbsp;  public boolean isPositionInvalid(float posX, float posY) {
+<b class="fc">&nbsp;    float tileWidth = collisionsLayer.getTileWidth() * renderer.getUnitScale();</b>
+<b class="fc">&nbsp;    float tileHeight = collisionsLayer.getTileHeight() * renderer.getUnitScale();</b>
+&nbsp;
+&nbsp;    // finds tile coordinates of a map position
+<b class="fc">&nbsp;    int x = (int) (posX / tileWidth);</b>
+<b class="fc">&nbsp;    int y = (int) (posY / tileHeight);</b>
+&nbsp;
+&nbsp;    // if the cell at tile coords is null, the position is invalid
+<b class="fc">&nbsp;    TiledMapTileLayer.Cell cell = collisionsLayer.getCell(x, y);</b>
+&nbsp;
+&nbsp;    // position is invalid if it falls in an unwalkable tile
+<b class="fc">&nbsp;    return cell != null;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Checks if any corner of a rectangle object falls in an invalid position.
+&nbsp;   * Rectangle is blocked if any corners of the rectangle are invalid tiles.
+&nbsp;   *
+&nbsp;   * @param rect represents the hitbox of the player
+&nbsp;   * @return true if any corner is in the collision layer
+&nbsp;   */
+&nbsp;  public boolean isRectValid(Rectangle rect) {
+<b class="nc">&nbsp;    return !isPositionInvalid(rect.x, rect.y) // bottom left corner</b>
+<b class="nc">&nbsp;        &amp;&amp; !isPositionInvalid(rect.x + rect.width, rect.y)  // bottom right</b>
+<b class="nc">&nbsp;        &amp;&amp; !isPositionInvalid(rect.x, rect.y + rect.height) // top left</b>
+<b class="nc">&nbsp;        &amp;&amp; !isPositionInvalid(rect.x + rect.width, rect.y + rect.height); // top right</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public void dispose() {
+<b class="nc">&nbsp;    renderer.dispose();</b>
+<b class="nc">&nbsp;    map.dispose();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  public TiledMap getMap() {
+<b class="nc">&nbsp;    return map;</b>
+&nbsp;  }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-01-02 16:28</div>
+</div>
+</body>
+</html>

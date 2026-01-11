@@ -1,0 +1,296 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > CreditsScreen</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">io.github.glitchgobblers.screens</a>
+</div>
+
+<h1>Coverage Summary for Class: CreditsScreen (io.github.glitchgobblers.screens)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CreditsScreen</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/50)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CreditsScreen$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CreditsScreen$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/56)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package io.github.glitchgobblers.screens;
+&nbsp;
+&nbsp;import com.badlogic.gdx.Gdx;
+&nbsp;import com.badlogic.gdx.Screen;
+&nbsp;import com.badlogic.gdx.graphics.Color;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.InputEvent;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.InputListener;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.Stage;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.ui.Label;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+&nbsp;import com.badlogic.gdx.utils.Align;
+&nbsp;import com.badlogic.gdx.utils.ScreenUtils;
+&nbsp;import io.github.glitchgobblers.YettiGame;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;
+&nbsp;import static io.github.glitchgobblers.YettiGame.scaled;
+&nbsp;
+&nbsp;public class CreditsScreen implements Screen {
+&nbsp;  private final YettiGame game;
+&nbsp;  private final Stage stage;
+&nbsp;
+<b class="nc">&nbsp;  private final ArrayList&lt;Label&gt; creditLabels = new ArrayList&lt;&gt;();</b>
+&nbsp;
+<b class="nc">&nbsp;  public CreditsScreen(final YettiGame game) {</b>
+<b class="nc">&nbsp;    this.game = game;</b>
+<b class="nc">&nbsp;    stage = new Stage(game.viewport, game.batch);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void show() {
+<b class="nc">&nbsp;    Gdx.input.setInputProcessor(stage);</b>
+&nbsp;
+<b class="nc">&nbsp;    TextButton menuButton = new TextButton(&quot;Return to Menu&quot;, new TextButton.TextButtonStyle(null, null, null, game.font));</b>
+<b class="nc">&nbsp;    menuButton.setPosition(scaled(16) / 2, scaled(1), Align.center);</b>
+<b class="nc">&nbsp;    menuButton.addListener(new InputListener() {</b>
+&nbsp;      @Override
+&nbsp;      public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+<b class="nc">&nbsp;        game.setScreen(new MenuScreen(game));</b>
+<b class="nc">&nbsp;        dispose();</b>
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;      }
+&nbsp;    });
+<b class="nc">&nbsp;    stage.addActor(menuButton);</b>
+&nbsp;
+&nbsp;    // Left column
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;LibGDX (Apache License 2.0)&quot;, &quot;https://github.com/libgdx/libgdx&quot;,
+<b class="nc">&nbsp;        scaled(0.5f), scaled(7f)</b>
+&nbsp;    );
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;Cool School tileset (CC0 1.0)&quot;, &quot;https://opengameart.org/content/cool-school-tileset&quot;,
+<b class="nc">&nbsp;        scaled(0.5f), scaled(6f)</b>
+&nbsp;    );
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;Super Retro World (Custom licence)&quot;, &quot;https://gif-superretroworld.itch.io/interior-pack&quot;,
+<b class="nc">&nbsp;        scaled(0.5f), scaled(5f)</b>
+&nbsp;    );
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;Free Pixel Character (CC0 1.0)&quot;, &quot;https://kettoman.itch.io/free-pixel-character-base-pack-32x32-top-down-farmer-animations&quot;,
+<b class="nc">&nbsp;        scaled(0.5f), scaled(4f)</b>
+&nbsp;    );
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;Roboto (Open Font License 1.1)&quot;, &quot;https://github.com/googlefonts/roboto-3-classic/&quot;,
+<b class="nc">&nbsp;        scaled(0.5f), scaled(3f)</b>
+&nbsp;    );
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;(Roboto copyright notice)&quot;, &quot;https://github.com/googlefonts/roboto-3-classic/blob/main/OFL.txt&quot;,
+<b class="nc">&nbsp;        scaled(1.5f), scaled(2f)</b>
+&nbsp;    );
+&nbsp;
+&nbsp;    // Right column
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;Duck Quack (CC0 1.0)&quot;, &quot;https://freesound.org/people/Tabby+Gus./sounds/515408/&quot;,
+<b class="nc">&nbsp;        scaled(9f), scaled(7f)</b>
+&nbsp;    );
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;Paper Rustle (CC0 1.0)&quot;, &quot;https://freesound.org/people/BenjaminNelan/sounds/353125/&quot;,
+<b class="nc">&nbsp;        scaled(9f), scaled(6f)</b>
+&nbsp;    );
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;dorm door opening (CC0 1.0)&quot;, &quot;https://freesound.org/people/pagancow/sounds/15419/&quot;,
+<b class="nc">&nbsp;        scaled(9f), scaled(5f)</b>
+&nbsp;    );
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;Cartoon Quick Zip (CC0 1.0)&quot;, &quot;https://freesound.org/people/se2001/sounds/541506/&quot;,
+<b class="nc">&nbsp;        scaled(9f), scaled(4f)</b>
+&nbsp;    );
+<b class="nc">&nbsp;    addCreditHyperlinkLabel(</b>
+&nbsp;        &quot;Deep Growl 1 (CC0 1.0)&quot;, &quot;https://freesound.org/people/noahpardo/sounds/345733/&quot;,
+<b class="nc">&nbsp;        scaled(9f), scaled(3f)</b>
+&nbsp;    );
+&nbsp;  }
+&nbsp;
+&nbsp;  private void addCreditHyperlinkLabel(String text, String href, float x, float y) {
+<b class="nc">&nbsp;    Label label = new Label(text, new Label.LabelStyle(game.fontSmall, Color.CYAN.cpy()));</b>
+<b class="nc">&nbsp;    label.setPosition(x, y);</b>
+<b class="nc">&nbsp;    label.addListener(new ClickListener() {</b>
+&nbsp;      @Override
+&nbsp;      public void clicked(InputEvent event, float x, float y) {
+<b class="nc">&nbsp;        Gdx.net.openURI(href);</b>
+&nbsp;      }
+&nbsp;    });
+<b class="nc">&nbsp;    creditLabels.add(label);</b>
+<b class="nc">&nbsp;    stage.addActor(label);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void render(float delta) {
+<b class="nc">&nbsp;    ScreenUtils.clear(0.4f, 0.4f, 0.4f, 1f);</b>
+<b class="nc">&nbsp;    game.viewport.apply();</b>
+<b class="nc">&nbsp;    game.batch.setProjectionMatrix(game.viewport.getCamera().combined);</b>
+<b class="nc">&nbsp;    game.batch.begin();</b>
+<b class="nc">&nbsp;    game.font.draw(game.batch, &quot;Credits&quot;, 0, scaled(8.5f), scaled(16), Align.center, false);</b>
+&nbsp;
+<b class="nc">&nbsp;    creditLabels.forEach(l -&gt; l.draw(game.batch, 1.0f));</b>
+&nbsp;
+<b class="nc">&nbsp;    game.fontSmall.draw(game.batch, &quot;Click a link to go to the source&quot;, scaled(9f), scaled(2.5f));</b>
+&nbsp;
+<b class="nc">&nbsp;    game.batch.end();</b>
+&nbsp;
+<b class="nc">&nbsp;    stage.draw();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void resize(int width, int height) {
+<b class="nc">&nbsp;    game.viewport.update(width, height, true);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void pause() {
+<b class="nc">&nbsp;  }</b>
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void resume() {
+<b class="nc">&nbsp;  }</b>
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void hide() {
+<b class="nc">&nbsp;  }</b>
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void dispose() {
+<b class="nc">&nbsp;    stage.dispose();</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-01-02 16:28</div>
+</div>
+</body>
+</html>

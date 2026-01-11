@@ -1,0 +1,209 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Timer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">io.github.glitchgobblers</a>
+</div>
+
+<h1>Coverage Summary for Class: Timer (io.github.glitchgobblers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Timer</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    77.8%
+  </span>
+  <span class="absValue">
+    (7/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    44.4%
+  </span>
+  <span class="absValue">
+    (8/18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    76.2%
+  </span>
+  <span class="absValue">
+    (16/21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package io.github.glitchgobblers;
+&nbsp;
+&nbsp;/**
+&nbsp; * Handles real-time countdowns. Can be paused.
+&nbsp; */
+&nbsp;public class Timer {
+<b class="fc">&nbsp;  private boolean active = false;</b>
+<b class="fc">&nbsp;  private boolean finished = false;</b>
+&nbsp;  private int duration;
+&nbsp;  private int endTime;
+&nbsp;
+<b class="fc">&nbsp;  public Timer(int duration) {</b>
+<b class="fc">&nbsp;    this.duration = duration;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Plays the Timer (if it is not already playing or finished).
+&nbsp;   * While playing, it is active, and counts down its duration.
+&nbsp;   */
+&nbsp;  public void play() {
+<b class="pc">&nbsp;    if (finished || active) {</b>
+&nbsp;      return;
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    active = true;</b>
+<b class="fc">&nbsp;    endTime = currentTimeSeconds() + duration;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Pauses the Timer (if it is not already paused or finished).
+&nbsp;   * While paused, it is not active, and its duration is stored.
+&nbsp;   */
+&nbsp;  public void pause() {
+<b class="pc">&nbsp;    if (finished || !active) {</b>
+&nbsp;      return;
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    active = false;</b>
+<b class="fc">&nbsp;    duration = endTime - currentTimeSeconds();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Finishes the Timer (if it is not already finished).
+&nbsp;   * While finished, it is not active, its duration is 0, and it cannot be played or paused.
+&nbsp;   */
+&nbsp;  public void finish() {
+<b class="nc">&nbsp;    if (finished || !active) {</b>
+&nbsp;      return;
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    active = false;</b>
+<b class="nc">&nbsp;    finished = true;</b>
+<b class="nc">&nbsp;    duration = 0;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * @return true if the Timer is currently active; false otherwise.
+&nbsp;   */
+&nbsp;  public boolean isActive() {
+<b class="fc">&nbsp;    return active;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * @return true if the Timer is currently finished; false otherwise.
+&nbsp;   */
+&nbsp;  public boolean isFinished() {
+<b class="nc">&nbsp;    return finished;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * @return true if the Timer is currently active AND its full duration has passed; false otherwise.
+&nbsp;   */
+&nbsp;  public boolean hasElapsed() {
+<b class="pc">&nbsp;    return active &amp;&amp; currentTimeSeconds() &gt;= endTime;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * @return The remaining duration of the Timer in seconds.
+&nbsp;   */
+&nbsp;  public int getRemainingTime() {
+&nbsp;    // If the timer isn&#39;t active, use the stored duration value
+<b class="fc">&nbsp;    if (!active) {</b>
+<b class="fc">&nbsp;      return duration;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Otherwise calculate dynamically
+<b class="fc">&nbsp;    return endTime - currentTimeSeconds();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  private int currentTimeSeconds() {
+<b class="fc">&nbsp;    return Math.toIntExact(System.currentTimeMillis() / 1000);</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-01-02 16:28</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Dean</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">io.github.glitchgobblers.entities</a>
+</div>
+
+<h1>Coverage Summary for Class: Dean (io.github.glitchgobblers.entities)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Dean</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (2/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (6/10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package io.github.glitchgobblers.entities;
+&nbsp;
+&nbsp;import com.badlogic.gdx.Screen;
+&nbsp;import com.badlogic.gdx.graphics.Texture;
+&nbsp;import io.github.glitchgobblers.YettiGame;
+&nbsp;import io.github.glitchgobblers.screens.LoseScreen;
+&nbsp;
+&nbsp;public class Dean extends Entity {
+&nbsp;  private static final float DEAN_SPEED = 5f;
+&nbsp;
+&nbsp;  public Dean(Texture tex, float x, float y) {
+&nbsp;    // Dean should be larger than 1 tile to appear imposing (he can move through walls)
+<b class="fc">&nbsp;    super(tex, x, y, 2f, 2.5f, DEAN_SPEED, false, false);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Run the logic for when the Dean gets the Player and the Player loses.
+&nbsp;   *
+&nbsp;   * @param game The current YettiGame object.
+&nbsp;   */
+&nbsp;  public void getsPlayer(final YettiGame game) {
+<b class="nc">&nbsp;    Screen prevScreen = game.getScreen();</b>
+<b class="nc">&nbsp;    int finalScore = game.calculateFinalScore();</b>
+<b class="nc">&nbsp;    game.setScreen(new LoseScreen(game, finalScore, game.playerName));</b>
+<b class="nc">&nbsp;    prevScreen.dispose();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  /**
+&nbsp;   * Calculate this Dean&#39;s movement towards the Player.
+&nbsp;   *
+&nbsp;   * @param player The current Player object.
+&nbsp;   */
+&nbsp;  public void calculateMovement(final Player player) {
+<b class="fc">&nbsp;    resetMovement();</b>
+&nbsp;    // Calculate vertical and horizontal distance to Player
+<b class="fc">&nbsp;    float xDistance = player.getX() - this.getX();</b>
+<b class="fc">&nbsp;    float yDistance = player.getY() - this.getY();</b>
+&nbsp;    // Set the Dean&#39;s movement to this distance
+<b class="fc">&nbsp;    addMovement(xDistance, yDistance);</b>
+&nbsp;    // Normalise the movement vector so the dean only moves 1 tile
+<b class="fc">&nbsp;    normaliseMovement();</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-01-02 16:28</div>
+</div>
+</body>
+</html>

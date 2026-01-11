@@ -1,0 +1,435 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > NamingScreen</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">io.github.glitchgobblers.screens</a>
+</div>
+
+<h1>Coverage Summary for Class: NamingScreen (io.github.glitchgobblers.screens)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">NamingScreen</td>
+<td class="coverageStat">
+  <span class="percent">
+    38.5%
+  </span>
+  <span class="absValue">
+    (5/13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10%
+  </span>
+  <span class="absValue">
+    (3/30)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    54.8%
+  </span>
+  <span class="absValue">
+    (51/93)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">NamingScreen$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (1/3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">NamingScreen$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (1/4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">NamingScreen$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    20%
+  </span>
+  <span class="absValue">
+    (1/5)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">NamingScreen$4</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (1/6)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    42.9%
+  </span>
+  <span class="absValue">
+    (9/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    9.4%
+  </span>
+  <span class="absValue">
+    (3/32)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    49.5%
+  </span>
+  <span class="absValue">
+    (55/111)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package io.github.glitchgobblers.screens;
+&nbsp;
+&nbsp;import static io.github.glitchgobblers.YettiGame.scaled;
+&nbsp;
+&nbsp;import com.badlogic.gdx.Gdx;
+&nbsp;import com.badlogic.gdx.Input;
+&nbsp;import com.badlogic.gdx.Screen;
+&nbsp;import com.badlogic.gdx.graphics.Color;
+&nbsp;import com.badlogic.gdx.graphics.Pixmap;
+&nbsp;import com.badlogic.gdx.graphics.Texture;
+&nbsp;import com.badlogic.gdx.graphics.g2d.Batch;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.InputEvent;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.InputListener;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.Stage;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+&nbsp;import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+&nbsp;import com.badlogic.gdx.utils.Align;
+&nbsp;import com.badlogic.gdx.utils.ScreenUtils;
+&nbsp;import io.github.glitchgobblers.YettiGame;
+&nbsp;import io.github.glitchgobblers.identity;
+&nbsp;
+&nbsp;public class NamingScreen implements Screen {
+&nbsp;  private final YettiGame game;
+&nbsp;  private final Stage stage;
+&nbsp;
+&nbsp;  private TextField nameField;
+&nbsp;
+&nbsp;  private Texture btnBgTex;
+&nbsp;  private Texture btnBorderTex;
+&nbsp;  private Texture btnHoverBgTex;
+&nbsp;  private Texture btnHoverBorderTex;
+&nbsp;  private Texture fieldBgTex;
+&nbsp;  private Texture fieldBorderTex;
+&nbsp;
+<b class="fc">&nbsp;  private String errorText = &quot;&quot;;</b>
+&nbsp;  private static final int MAX_LEN = 16;
+&nbsp;
+<b class="fc">&nbsp;  public NamingScreen(YettiGame game) {</b>
+<b class="fc">&nbsp;    this.game = game;</b>
+<b class="fc">&nbsp;    this.stage = new Stage(game.viewport, game.batch);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void show() {
+<b class="fc">&nbsp;    String current = identity.getName();</b>
+<b class="pc">&nbsp;    if (current != null &amp;&amp; !current.isEmpty() &amp;&amp; !&quot;Player&quot;.equals(current)) {</b>
+<b class="nc">&nbsp;      game.playerName = current;</b>
+<b class="nc">&nbsp;      game.setScreen(new GameScreen(game));</b>
+<b class="nc">&nbsp;      dispose();</b>
+&nbsp;      return;
+&nbsp;    }
+&nbsp;
+<b class="fc">&nbsp;    Gdx.input.setInputProcessor(stage);</b>
+&nbsp;
+<b class="fc">&nbsp;    btnBgTex = makeColorTex(1, 1, 0f, 0f, 0f, 0.4f);</b>
+<b class="fc">&nbsp;    btnBorderTex = makeColorTex(1, 1, 1f, 1f, 1f, 0.9f);</b>
+<b class="fc">&nbsp;    btnHoverBgTex = makeColorTex(1, 1, 0.3f, 0.3f, 0.3f, 0.6f);</b>
+<b class="fc">&nbsp;    btnHoverBorderTex = makeColorTex(1, 1, 1f, 1f, 1f, 1f);</b>
+<b class="fc">&nbsp;    fieldBgTex = makeColorTex(1, 1, 1f, 1f, 1f, 0.18f);</b>
+<b class="fc">&nbsp;    fieldBorderTex = makeColorTex(1, 1, 1f, 1f, 1f, 0.9f);</b>
+&nbsp;
+<b class="fc">&nbsp;    TextButton.TextButtonStyle btnStyle = new TextButton.TextButtonStyle();</b>
+<b class="fc">&nbsp;    btnStyle.up = bordered(btnBgTex, btnBorderTex);</b>
+<b class="fc">&nbsp;    btnStyle.down = bordered(btnHoverBgTex, btnHoverBorderTex);</b>
+<b class="fc">&nbsp;    btnStyle.over = bordered(btnHoverBgTex, btnHoverBorderTex);</b>
+<b class="fc">&nbsp;    btnStyle.font = game.font;</b>
+&nbsp;
+<b class="fc">&nbsp;    TextField.TextFieldStyle tfStyle = new TextField.TextFieldStyle();</b>
+<b class="fc">&nbsp;    tfStyle.font = game.font;</b>
+<b class="fc">&nbsp;    tfStyle.fontColor = Color.WHITE;</b>
+<b class="fc">&nbsp;    tfStyle.background = bordered(fieldBgTex, fieldBorderTex);</b>
+<b class="fc">&nbsp;    tfStyle.cursor = new TextureRegionDrawable(fieldBorderTex);</b>
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;    nameField = new TextField(&quot;&quot;, tfStyle);</b>
+<b class="fc">&nbsp;    nameField.setMessageText(&quot;Type name…&quot;);</b>
+<b class="fc">&nbsp;    nameField.setMaxLength(MAX_LEN);</b>
+<b class="fc">&nbsp;    nameField.setAlignment(Align.center);</b>
+&nbsp;
+<b class="fc">&nbsp;    float fieldW = scaled(8f);</b>
+<b class="fc">&nbsp;    float fieldH = scaled(1.4f);</b>
+<b class="fc">&nbsp;    nameField.setSize(fieldW, fieldH);</b>
+<b class="fc">&nbsp;    nameField.setPosition(scaled(16) / 2f - fieldW / 2f, scaled(6f) - fieldH / 2f);</b>
+&nbsp;
+<b class="fc">&nbsp;    TextButton startButton = new TextButton(&quot;Start&quot;, btnStyle);</b>
+<b class="fc">&nbsp;    startButton.setPosition(scaled(16) / 2f, scaled(4.4f), Align.center);</b>
+<b class="fc">&nbsp;    startButton.addListener(new InputListener() {</b>
+&nbsp;      @Override public boolean touchDown(InputEvent e, float x, float y, int p, int b) {
+<b class="nc">&nbsp;        confirm();</b>
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;      }
+&nbsp;    });
+&nbsp;
+<b class="fc">&nbsp;    TextButton backButton = new TextButton(&quot;Back&quot;, btnStyle);</b>
+<b class="fc">&nbsp;    backButton.setPosition(scaled(16) / 2f, scaled(2.9f), Align.center);</b>
+<b class="fc">&nbsp;    backButton.addListener(new InputListener() {</b>
+&nbsp;      @Override public boolean touchDown(InputEvent e, float x, float y, int p, int b) {
+<b class="nc">&nbsp;        game.setScreen(new MenuScreen(game));</b>
+<b class="nc">&nbsp;        dispose();</b>
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;      }
+&nbsp;    });
+&nbsp;
+<b class="fc">&nbsp;    nameField.setTextFieldListener((f, c) -&gt; {</b>
+<b class="nc">&nbsp;      if (c == &#39;\r&#39; || c == &#39;\n&#39;) {</b>
+<b class="nc">&nbsp;        confirm();</b>
+&nbsp;      }
+&nbsp;    });
+<b class="fc">&nbsp;    stage.addListener(new InputListener() {</b>
+&nbsp;      @Override public boolean keyDown(InputEvent e, int keycode) {
+<b class="nc">&nbsp;        if (keycode == Input.Keys.ENTER) {</b>
+<b class="nc">&nbsp;          confirm();</b>
+<b class="nc">&nbsp;          return true;</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;          return false;</b>
+&nbsp;        }
+&nbsp;      }
+&nbsp;    });
+&nbsp;
+<b class="fc">&nbsp;    stage.addActor(nameField);</b>
+<b class="fc">&nbsp;    stage.addActor(startButton);</b>
+<b class="fc">&nbsp;    stage.addActor(backButton);</b>
+<b class="fc">&nbsp;    stage.setKeyboardFocus(nameField);</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  private TextureRegionDrawable bordered(Texture bg, Texture border) {
+<b class="fc">&nbsp;    return new TextureRegionDrawable(bg) {</b>
+&nbsp;      @Override public void draw(Batch batch, float x, float y, float w, float h) {
+<b class="nc">&nbsp;        super.draw(batch, x, y, w, h);</b>
+<b class="nc">&nbsp;        batch.draw(border, x, y, w, 1);</b>
+<b class="nc">&nbsp;        batch.draw(border, x, y + h - 1, w, 1);</b>
+<b class="nc">&nbsp;        batch.draw(border, x, y, 1, h);</b>
+<b class="nc">&nbsp;        batch.draw(border, x + w - 1, y, 1, h);</b>
+&nbsp;      }
+&nbsp;    };
+&nbsp;  }
+&nbsp;
+&nbsp;  private Texture makeColorTex(int w, int h, float r, float g, float b, float a) {
+<b class="fc">&nbsp;    Pixmap p = new Pixmap(w, h, Pixmap.Format.RGBA8888);</b>
+<b class="fc">&nbsp;    p.setColor(r, g, b, a);</b>
+<b class="fc">&nbsp;    p.fill();</b>
+<b class="fc">&nbsp;    Texture t = new Texture(p);</b>
+<b class="fc">&nbsp;    p.dispose();</b>
+<b class="fc">&nbsp;    return t;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  private void confirm() {
+<b class="nc">&nbsp;    String raw = nameField.getText();</b>
+<b class="nc">&nbsp;    String cleaned = sanitise(raw);</b>
+&nbsp;
+<b class="nc">&nbsp;    if (cleaned.isEmpty()) {</b>
+<b class="nc">&nbsp;      errorText = &quot;Name can&#39;t be empty.&quot;;</b>
+&nbsp;      return;
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    identity.setName(cleaned);</b>
+<b class="nc">&nbsp;    game.playerName = cleaned;</b>
+&nbsp;
+<b class="nc">&nbsp;    game.setScreen(new GameScreen(game));</b>
+<b class="nc">&nbsp;    dispose();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  private String sanitise(String s) {
+<b class="nc">&nbsp;    if (s == null) return &quot;&quot;;</b>
+<b class="nc">&nbsp;    String t = s.replaceAll(&quot;\\p{Cntrl}&quot;, &quot;&quot;).trim();</b>
+<b class="nc">&nbsp;    if (t.length() &gt; MAX_LEN) t = t.substring(0, MAX_LEN);</b>
+<b class="nc">&nbsp;    return t;</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void render(float delta) {
+<b class="nc">&nbsp;    ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);</b>
+&nbsp;
+<b class="nc">&nbsp;    game.viewport.apply();</b>
+<b class="nc">&nbsp;    game.batch.setProjectionMatrix(game.viewport.getCamera().combined);</b>
+<b class="nc">&nbsp;    game.batch.begin();</b>
+&nbsp;
+<b class="nc">&nbsp;    game.font.draw(game.batch, &quot;Choose Your Name&quot;,</b>
+<b class="nc">&nbsp;      0, scaled(8f), scaled(16), Align.center, false);</b>
+&nbsp;
+<b class="nc">&nbsp;    if (!errorText.isEmpty()) {</b>
+<b class="nc">&nbsp;      game.font.setColor(Color.RED);</b>
+<b class="nc">&nbsp;      game.font.draw(</b>
+&nbsp;        game.batch,
+&nbsp;        errorText,
+&nbsp;        0,
+<b class="nc">&nbsp;        scaled(2.2f),</b>
+<b class="nc">&nbsp;        scaled(16),</b>
+&nbsp;        Align.center,
+&nbsp;        false
+&nbsp;      );
+<b class="nc">&nbsp;      game.font.setColor(Color.WHITE);</b>
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    game.batch.end();</b>
+&nbsp;
+<b class="nc">&nbsp;    stage.act(delta);</b>
+<b class="nc">&nbsp;    stage.draw();</b>
+&nbsp;  }
+&nbsp;
+&nbsp;  @Override public void resize(int width, int height) {
+<b class="fc">&nbsp;    game.viewport.update(width, height, true);</b>
+&nbsp;  }
+&nbsp;
+<b class="nc">&nbsp;  @Override public void pause() {}</b>
+<b class="nc">&nbsp;  @Override public void resume() {}</b>
+<b class="nc">&nbsp;  @Override public void hide() {}</b>
+&nbsp;
+&nbsp;  @Override
+&nbsp;  public void dispose() {
+<b class="nc">&nbsp;    stage.dispose();</b>
+<b class="nc">&nbsp;    if (btnBgTex != null) btnBgTex.dispose();</b>
+<b class="nc">&nbsp;    if (btnBorderTex != null) btnBorderTex.dispose();</b>
+<b class="nc">&nbsp;    if (btnHoverBgTex != null) btnHoverBgTex.dispose();</b>
+<b class="nc">&nbsp;    if (btnHoverBorderTex != null) btnHoverBorderTex.dispose();</b>
+<b class="nc">&nbsp;    if (fieldBgTex != null) fieldBgTex.dispose();</b>
+<b class="nc">&nbsp;    if (fieldBorderTex != null) fieldBorderTex.dispose();</b>
+&nbsp;  }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-01-02 16:28</div>
+</div>
+</body>
+</html>
